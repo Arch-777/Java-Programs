@@ -20,8 +20,6 @@ public class MethodOverloading {
         int Rec=length*breadth;
         System.out.println("Area of Rectangle = "+Rec);
     }
-    void distroy()
-    {}
     public static void main(String[] args)
     {
         MethodOverloading A1 = new MethodOverloading();
