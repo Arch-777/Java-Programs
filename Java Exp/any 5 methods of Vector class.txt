@@ -1,0 +1,46 @@
+import java.util.Vector;
+import java.util.Scanner;
+
+public class VectorStringOperations {
+    public static void main(String[] args) {
+        Vector<String> stringVector = new Vector<>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of initial strings to add:");
+        int n = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter " + n + " strings:");
+        for (int i = 0; i < n; i++) {
+            String input = scanner.nextLine();
+            stringVector.add(input);
+        }
+
+        while (true) {
+            System.out.println("\nCurrent Vector contents: " + stringVector);
+            System.out.println("Vector size: " + stringVector.size());
+
+            System.out.println("Enter a string (or 'exit' to quit):");
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+
+            if (stringVector.contains(input)) {
+                stringVector.remove(input);
+                System.out.println("'" + input + "' was found and removed.");
+            } else {
+                stringVector.add(input);
+                System.out.println("'" + input + "' was not found and has been added.");
+            }
+        }
+
+        System.out.println("\nFinal Vector contents:");
+        for (int i = 0; i < stringVector.size(); i++) {
+            System.out.println("Element at index " + i + ": " + stringVector.get(i));
+        }
+
+        scanner.close();
+    }
+}

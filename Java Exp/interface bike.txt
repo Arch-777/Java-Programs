@@ -1,0 +1,148 @@
+interface Vehicle {
+    void start();
+    void stop();
+    void accelerate(int speed);
+    void brake();
+    String getInfo();
+}
+
+class Bicycle implements Vehicle {
+    private int speed = 0;
+
+    @Override
+    public void start() {
+        System.out.println("Bicycle is ready to ride");
+    }
+
+    @Override
+    public void stop() {
+        speed = 0;
+        System.out.println("Bicycle has stopped");
+    }
+
+    @Override
+    public void accelerate(int increment) {
+        speed += increment;
+        System.out.println("Bicycle is pedaling faster, speed: " + speed + " km/h");
+    }
+
+    @Override
+    public void brake() {
+        speed = Math.max(0, speed - 5);
+        System.out.println("Bicycle is slowing down, speed: " + speed + " km/h");
+    }
+
+    @Override
+    public String getInfo() {
+        return "Bicycle - Current speed: " + speed + " km/h";
+    }
+}
+
+class Car implements Vehicle {
+    private boolean engineRunning = false;
+    private int speed = 0;
+
+    @Override
+    public void start() {
+        engineRunning = true;
+        System.out.println("Car engine started");
+    }
+
+    @Override
+    public void stop() {
+        engineRunning = false;
+        speed = 0;
+        System.out.println("Car engine stopped");
+    }
+
+    @Override
+    public void accelerate(int increment) {
+        if (engineRunning) {
+            speed += increment;
+            System.out.println("Car is accelerating, speed: " + speed + " km/h");
+        } else {
+            System.out.println("Cannot accelerate, car engine is not running");
+        }
+    }
+
+    @Override
+    public void brake() {
+        speed = Math.max(0, speed - 10);
+        System.out.println("Car is braking, speed: " + speed + " km/h");
+    }
+
+    @Override
+    public String getInfo() {
+        return "Car - Engine running: " + engineRunning + ", Current speed: " + speed + " km/h";
+    }
+}
+
+class Bike implements Vehicle {
+    private boolean engineRunning = false;
+    private int speed = 0;
+
+    @Override
+    public void start() {
+        engineRunning = true;
+        System.out.println("Bike engine started");
+    }
+
+    @Override
+    public void stop() {
+        engineRunning = false;
+        speed = 0;
+        System.out.println("Bike engine stopped");
+    }
+
+    @Override
+    public void accelerate(int increment) {
+        if (engineRunning) {
+            speed += increment;
+            System.out.println("Bike is accelerating, speed: " + speed + " km/h");
+        } else {
+            System.out.println("Cannot accelerate, bike engine is not running");
+        }
+    }
+
+    @Override
+    public void brake() {
+        speed = Math.max(0, speed - 8);
+        System.out.println("Bike is braking, speed: " + speed + " km/h");
+    }
+
+    @Override
+    public String getInfo() {
+        return "Bike - Engine running: " + engineRunning + ", Current speed: " + speed + " km/h";
+    }
+}
+
+public class VehicleDemo {
+    public static void main(String[] args) {
+        Vehicle bicycle = new Bicycle();
+        Vehicle car = new Car();
+        Vehicle bike = new Bike();
+
+        System.out.println("Bicycle Demo:");
+        bicycle.start();
+        bicycle.accelerate(10);
+        bicycle.brake();
+        System.out.println(bicycle.getInfo());
+        bicycle.stop();
+        System.out.println();
+
+        System.out.println("Car Demo:");
+        car.start();
+        car.accelerate(50);
+        car.brake();
+        System.out.println(car.getInfo());
+        car.stop();
+        System.out.println();
+
+        System.out.println("Bike Demo:");
+        bike.start();
+        bike.accelerate(30);
+        bike.brake();
+        System.out.println(bike.getInfo());
+        bike.stop();
+    }
+}

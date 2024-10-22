@@ -1,0 +1,42 @@
+import java.util.*;
+public class Test
+{
+     void factorial(int n)
+    {
+        int fact=1;
+        int i;
+        for(i=1;i<=n;i++)
+        {
+            fact=fact*i;
+        }
+        System.out.println("Factorial of the number is :"+fact);
+        
+    }
+void OddEven(int n) {
+        if (n % 2 == 0) {
+            System.out.println(n + " is an Even number");
+        } else {
+            System.out.println(n + " is an Odd number");
+        }
+    }
+
+public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n;
+        int choice;
+        Test obj=new Test();
+        System.out.println("Enter the number");
+        n=sc.nextInt();
+        System.out.println("1.Factorial\n2.Odd or Even\nEnter Your choice");
+        choice=sc.nextInt();
+        switch(choice)
+        {
+            case 1:obj.factorial(n);
+            break;
+	    case 2:obj.OddEven(n);
+            break;
+            default:System.out.println("Invalid Input");
+           }
+       }
+}

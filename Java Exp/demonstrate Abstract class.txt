@@ -1,0 +1,28 @@
+abstract class shape {
+    abstract void area();
+}
+
+class circle extends shape {
+    int r = 5;
+
+    void area() {
+        System.out.println("Area of circle: " + 3.14 * r * r);
+    }
+}
+
+class triangle extends shape {
+    int h = 10, b = 5;
+
+    void area() {
+        System.out.println("Area of triangle: " + 0.5 * h * b);
+    }
+}
+
+class AbstractDemo {
+    public static void main(String[] args) {
+        circle c = new circle();
+        triangle t = new triangle();
+        c.area();
+        t.area();
+    }
+}

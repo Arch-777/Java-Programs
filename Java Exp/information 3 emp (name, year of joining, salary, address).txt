@@ -1,0 +1,31 @@
+class Details {
+    String name;
+    int yearOfJoining;
+    double salary;
+    String address;
+
+    Details(String empName, int empYear, double empSalary, String empAddress) {
+        name = empName;
+        yearOfJoining = empYear;
+        salary = empSalary;
+        address = empAddress;
+    }
+
+    void display() {
+        System.out.println(name + "   " + yearOfJoining + "   " + salary + "   " + address);
+    }
+}
+
+public class Employeee {
+    public static void main(String[] args) {
+        Details emp1 = new Details("Robert", 1994, 50000, "64C-WallStreet");
+        Details emp2 = new Details("Sam", 2000, 60000, "68D-WallStreet");
+        Details emp3 = new Details("John", 1999, 55000, "26B-WallStreet");
+
+        System.out.println("Name     Year of Joining   Salary   Address");
+
+        emp1.display();
+        emp2.display();
+        emp3.display();
+    }
+}
