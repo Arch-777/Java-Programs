@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <graphics.h>
+#include <dos.h>
+
+// Function prototype for flood fill
+void flood(int x, int y, int fc, int oc);
+
+int main() {
+    int gm, gd = DETECT;
+
+    // Initialize the graphics mode
+    initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+
+    // Draw a rectangle
+    rectangle(50, 50, 100, 100);
+
+    // Apply flood fill starting from inside the rectangle (55,55)
+    flood(55, 55, 12, 0); // Fill with color 12 and old color is 0
+
+    // Close the graphics mode
+    closegraph();
+    return 0;
+}
+
+// Flood fill algorithm
+void flood(int x, int y, int fc, int oc) {
+    if (getpixel(x, y) == oc) {
+        delay(50); // Add a slight delay to visualize the filling
+        putpixel(x, y, fc); // Set the pixel to the fill color
+
+        // Recursively fill in all directions (4-connectivity and diagonal directions)
+        flood(x + 1, y, fc, oc); // Right
+        flood(x - 1, y, fc, oc); // Left
+        flood(x, y + 1, fc, oc); // Down
+        flood(x, y - 1, fc, oc); // Up
+        flood(x + 1, y + 1, fc, oc); // Diagonal right-down
+        flood(x - 1, y - 1, fc, oc); // Diagonal left-up
+        flood(x + 1, y - 1, fc, oc); // Diagonal right-up
+        flood(x - 1, y + 1, fc, oc); // Diagonal left-down
+    }
+}

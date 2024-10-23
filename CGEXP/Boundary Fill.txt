@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <graphics.h>
+#include <dos.h>
+
+void boundaryfill(int x, int y, int fc, int bc) {
+    // Check if the current pixel is not the boundary color and not the fill color
+    if (getpixel(x, y) != bc && getpixel(x, y) != fc) {
+        putpixel(x, y, fc); // Set the pixel to the fill color
+        
+        // Recursively call the function in four directions
+        boundaryfill(x + 1, y, fc, bc); // Right
+        boundaryfill(x, y + 1, fc, bc); // Down
+        boundaryfill(x - 1, y, fc, bc); // Left
+        boundaryfill(x, y - 1, fc, bc); // Up
+    }
+}
+
+int main() {
+    int gm, gd = DETECT, r;
+    int x, y;
+
+    printf("Enter x and y positions for circle:\n");
+    scanf("%d %d", &x, &y);
+    printf("Enter radius of circle:\n");
+    scanf("%d", &r);
+
+    // Initialize the graphics system
+    initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+
+    // Draw the circle
+    circle(x, y, r);
+    
+    // Fill the circle with color (5 for fill color and 15 for boundary color)
+    boundaryfill(x, y, 5, 15); 
+
+    // Wait for 3000 milliseconds
+    delay(3000); 
+
+    // Close the graphics system
+    closegraph(); 
+    return 0; 
+}

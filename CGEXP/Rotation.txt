@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <conio.h>
+#include <graphics.h>
+#include <math.h>
+
+void main() {
+    int gd = DETECT, gm;
+    initgraph(&gd, &gm, "C:\\tc\\BGI");
+
+    long x1 = 100, y1 = 100, x2 = 200, y2 = 200;
+    double angle, xt, yt;
+
+    cleardevice();
+    printf("Enter angle of rotation: ");
+    scanf("%lf", &angle);
+
+    angle = (angle * 3.14) / 180.0;
+
+    xt = x1 + ((x2 - x1) * cos(angle) - (y2 - y1) * sin(angle));
+    yt = y1 + ((x2 - x1) * sin(angle) + (y2 - y1) * cos(angle));
+
+    printf("Line before rotation:\n");
+    line(x1, y1, x2, y2);
+    getch();
+
+    cleardevice();
+    printf("Line after rotation:\n");
+    line(x1, y1, (int)xt, (int)yt);
+    getch();
+
+    closegraph();
+}
